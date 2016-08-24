@@ -34,14 +34,12 @@ boundaryField
     }
     bottomWall
     {
-        type            inletOutlet;
-        inletValue      uniform 1000;
+        type            fixedValue;
         value           uniform 1000;
     }
     topWall
     {
-        type            inletOutlet;
-        inletValue      uniform 1000;
+        type            fixedValue;
         value           uniform 1000;
     }
     innerWall

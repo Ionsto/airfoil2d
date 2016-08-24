@@ -9,53 +9,46 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
-
-
-internalField   uniform (200 0 0);
-
-boundaryField
+solvers
 {
-    inlet
+    "rho.*"
     {
-        type            fixedValue;
-        value           uniform (200 0 0);
+        solver          diagonal;
     }
 
-    outlet
+    "p.*"
     {
-        type            inletOutlet;
-        inletValue      uniform (200 0 0);
-        value           uniform (200 0 0);
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-08;
+        relTol          0;
     }
 
-    bottomWall
+    "(U|e|R).*"
     {
-        type            fixedValue;
-        value           uniform (200 0 0);
+        $p;
+        tolerance       1e-05;
     }
 
-    topWall
+    "(k|epsilon).*"
     {
-        type            fixedValue;
-        value           uniform (200 0 0);
-    }
-
-    innerWall
-    {
-        type            fixedValue;
-        value           uniform (0 0 0);
-    }
-
-    frontAndBack
-    {
-        type            empty;
+        $p;
+        tolerance       1e-08;
     }
 }
+
+PIMPLE
+{
+    nOuterCorrectors 2;
+    nCorrectors      1;
+    nNonOrthogonalCorrectors 0;
+}
+
 
 // ************************************************************************* //

@@ -36,16 +36,12 @@ boundaryField
 
     bottomWall
     {
-        type            inletOutlet;
-        inletValue      uniform 300;
-        value           uniform 300;
+        type            zeroGradient;
     }
 
     topWall
     {
-        type            inletOutlet;
-        inletValue      uniform 300;
-        value           uniform 300;
+        type            zeroGradient;
     }
 
     innerWall

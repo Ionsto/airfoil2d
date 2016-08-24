@@ -9,53 +9,13 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       dictionary;
+    location    "constant";
+    object      turbulenceProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
+simulationType  RASModel;
 
-
-internalField   uniform (200 0 0);
-
-boundaryField
-{
-    inlet
-    {
-        type            fixedValue;
-        value           uniform (200 0 0);
-    }
-
-    outlet
-    {
-        type            inletOutlet;
-        inletValue      uniform (200 0 0);
-        value           uniform (200 0 0);
-    }
-
-    bottomWall
-    {
-        type            fixedValue;
-        value           uniform (200 0 0);
-    }
-
-    topWall
-    {
-        type            fixedValue;
-        value           uniform (200 0 0);
-    }
-
-    innerWall
-    {
-        type            fixedValue;
-        value           uniform (0 0 0);
-    }
-
-    frontAndBack
-    {
-        type            empty;
-    }
-}
 
 // ************************************************************************* //

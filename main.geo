@@ -1,12 +1,12 @@
-angle_of_attack = 5*Pi/180;
+angle_of_attack = 10*Pi/180;
 airfoil_chord = 1;
-ground_height = 0.5*airfoil_chord;
-boundary_distance = 1.5*airfoil_chord;
+ground_height = 1.5*airfoil_chord;
+boundary_distance = 2*airfoil_chord;
 boundary_gridsize = 0.05*airfoil_chord;
 airfoil_gridsize = 0.01*airfoil_chord;
 AirfoilX = -0.5;
-AirfoilY = 0.5;
-cell_depth = airfoil_chord;
+AirfoilY = 0;
+cell_depth = 0.5 * airfoil_chord;
 te_omit = 0;
 
 ce = 0;
@@ -33,8 +33,8 @@ BSpline(ce++) = points[];spline_id = ce;
 Line(ce++) = {points[airfoil_points-1],points[0]};te_line = ce;
 
 pts[]={};
-Point(ce++) = {-boundary_distance,-ground_height,0,boundary_gridsize};pts[]+=ce;
-Point(ce++) = {boundary_distance,-ground_height,0,boundary_gridsize};pts[]+=ce;
+Point(ce++) = {-boundary_distance,-boundary_distance,0,boundary_gridsize};pts[]+=ce;
+Point(ce++) = {boundary_distance,-boundary_distance,0,boundary_gridsize};pts[]+=ce;
 Point(ce++) = {boundary_distance,boundary_distance,0,boundary_gridsize};pts[]+=ce;
 Point(ce++) = {-boundary_distance,boundary_distance,0,boundary_gridsize};pts[]+=ce;
 
@@ -62,4 +62,5 @@ Physical Surface("outlet") = new_entities[3];
 Physical Surface("topWall") = new_entities[4];
 Physical Surface("inlet") = new_entities[5];
 Physical Surface("innerWall") = new_entities[{6,7}];
-Physical Volume(1000) = new_entities[1];Coherence;
+Physical Volume(1000) = new_entities[1];
+Coherence;

@@ -9,53 +9,41 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
+application     sonicFoam;
 
+startFrom       startTime;
 
-internalField   uniform (200 0 0);
+startTime       0.000;
 
-boundaryField
-{
-    inlet
-    {
-        type            fixedValue;
-        value           uniform (200 0 0);
-    }
+stopAt          endTime;
 
-    outlet
-    {
-        type            inletOutlet;
-        inletValue      uniform (200 0 0);
-        value           uniform (200 0 0);
-    }
+endTime         0.0020;
 
-    bottomWall
-    {
-        type            fixedValue;
-        value           uniform (200 0 0);
-    }
+deltaT          5e-06;
 
-    topWall
-    {
-        type            fixedValue;
-        value           uniform (200 0 0);
-    }
+writeControl    runTime;
 
-    innerWall
-    {
-        type            fixedValue;
-        value           uniform (0 0 0);
-    }
+writeInterval   0.0001;
 
-    frontAndBack
-    {
-        type            empty;
-    }
-}
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
 
 // ************************************************************************* //
