@@ -35,18 +35,34 @@ boundaryField
         psi             thermo:psi;
         gamma           1.3;
         fieldInf        100000;
-        lInf            1;
+        lInf            0.03;
         value           uniform 100000;
     }
 
     bottomWall
     {
-        type            zeroGradient;
+        type            waveTransmissive;
+        field           p;
+        phi             phi;
+        rho             rho;
+        psi             thermo:psi;
+        gamma           1.3;
+        fieldInf        100000;
+        lInf            0.03;
+        value           uniform 100000;
     }
 
     topWall
     {
-        type            zeroGradient;
+        type            waveTransmissive;
+        field           p;
+        phi             phi;
+        rho             rho;
+        psi             thermo:psi;
+        gamma           1.3;
+        fieldInf        100000;
+        lInf            0.03;
+        value           uniform 100000;
     }
 
     innerWall

@@ -1,7 +1,7 @@
 angle_of_attack = 10*Pi/180;
 airfoil_chord = 1;
-ground_height = 1.5*airfoil_chord;
-boundary_distance = 2*airfoil_chord;
+ground_height = 1*airfoil_chord;
+boundary_distance = 1.5*airfoil_chord;
 boundary_gridsize = 0.05*airfoil_chord;
 airfoil_gridsize = 0.01*airfoil_chord;
 AirfoilX = -0.5;
