@@ -19,11 +19,11 @@ application     sonicFoam;
 
 startFrom       startTime;
 
-startTime       0.0000;
+startTime       0.0099;
 
 stopAt          endTime;
 
-endTime         0.0010;
+endTime         0.0150;
 
 deltaT          5e-06;
 
